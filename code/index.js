@@ -4,6 +4,8 @@ const AMOUNT_OF_TOTAL_QUESTIONS = 20;
 var blurAmount = "10px";
 //
 var selectedSubjects = [];
+var firstName;
+var lastName;
 
 // עמוד התרגול
 const CARD_NUMS = ["first", "second", "third"];
@@ -1025,7 +1027,10 @@ function insertFullName_popup() {
                 countValFirstName = document.querySelector(".page .instructions :nth-child(2)").value.length;
                  // רק במידה ומלאו את שדות המילוי יהיה ניתן לעבור למבחן
                 if (countValLastName > 1 && countValFirstName > 1) {
+                    firstName = document.querySelector(".page .instructions :nth-child(2)").value;
+                    lastName = document.querySelector(".page .instructions :nth-child(4)").value;
                     document.querySelector(".page.learning.subjects .start-btn").classList.add("done"); 
+                    console.log( `${firstName} ${lastName}`);
                 }
             }
         }
@@ -1042,8 +1047,10 @@ function insertFullName_popup() {
         }, listeners : {
             input: () => {
                 countValLastName = document.querySelector(".page .instructions :nth-child(4)").value.length;
-                 // רק במידה ומלאו את שדות המילוי יהיה ניתן לעבור למבחן
+                // רק במידה ומלאו את שדות המילוי יהיה ניתן לעבור למבחן
                 if (countValLastName > 1 && countValFirstName > 1) {
+                    firstName = document.querySelector(".page .instructions :nth-child(2)").value;
+                    lastName = document.querySelector(".page .instructions :nth-child(4)").value;
                     document.querySelector(".page.learning.subjects .start-btn").classList.add("done"); 
                 }
             }
@@ -1570,20 +1577,22 @@ function endExam(amountOfCorrectAnswers) {
     let examTotalTimeInSec = EXAM_MINUTS * 60 + 60; // לחישוב בבר
 
     // הטקסט לכותרות לפי ההצלחה של המשתמש
-    let isPassTitle;
-    let isPassSubTitle;
+    let name;
     let img;
+    let date;
+    let grade;
+
+    name = `${firstName} ${lastName}`;
+    date = new Date();
+    let today = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+
+    grade = amountOfCorrectAnswers / QUESTIONS.length * 100; 
+
     // האם כמות התשובות הנכונות גדולה מחצי מהשאלות
-    if (amountOfCorrectAnswers > QUESTIONS.length / 2) {
-        isPassTitle = "כל הכבוד!";
-        isPassSubTitle = "עברת את המבחן בהצלחה";
+    if (amountOfCorrectAnswers > QUESTIONS.length / 2) 
         img = "../assets/images/general/finish_popup/check_icon.svg"
-    }
-    else {
-        isPassTitle = "אוי... לא נורא";
-        isPassSubTitle = "בהצלחה בפעם הבאה...";
-        img = "../assets/images/general/finish_popup/x_icon.svg"
-    }
+    else 
+        img = "../assets/images/general/finish_popup/x_icon.svg"                  
 
     let finishPopup =
         El("div", { cls: "dark" },
@@ -1591,10 +1600,10 @@ function endExam(amountOfCorrectAnswers) {
             El("div", { cls: "end-exam" },
                 El("img", { attributes: { src: "../assets/images/general/close_btn.svg", class: "close-btn" } }),
                 // כותרות
-                El("div", { cls: "title-popup" }, isPassTitle),
+                El("div", { cls: "title-popup" }, name),
                 El("div", { cls: "popup-sub-titles" },
-                    El("div", { cls: "text1-popup" }, isPassSubTitle),
-                    El("div", { cls: "text2-popup" }, "הנה כמה נתונים שיעזרו לך"),
+                    El("div", { cls: "text1-popup" }, "ציון: " + grade),
+                    El("div", { cls: "text2-popup" }, today),
                 ),
                 El("div", { cls: "instructions-practice" },
                     // בלוק 1

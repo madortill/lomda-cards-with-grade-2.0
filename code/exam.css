@@ -219,3 +219,11 @@
 .page.exam .correct {
   --color: rgb(44, 191, 55);
 }
+
+.page.exam .name-bg {
+  height: 2em;
+  width: 5em;
+  background-image: url("../assets/images/exam/name_bg.svg");
+  background-repeat: no-repeat;
+  box-sizing: 100% 100%;
+}

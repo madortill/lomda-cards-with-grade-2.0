@@ -116,11 +116,24 @@ body {
    margin-top: 3em;
 }
 
+.page.exam .title-popup {
+   height: 1.6em;
+   background-image: url("../assets/images/exam/name_bg.svg");
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   border-radius: 1em;
+   width: 7.5em;
+   padding-top: 0.2em;
+}
+
+
 .page .popup-sub-titles {
   display: flex;
   align-items: center;
   flex-direction: column;
-  text-align: center;
+  text-align: center;    
+  height: 3em;
+  justify-content: space-around;
 }
 
 .page .text1-popup {
@@ -322,8 +335,8 @@ body {
 }
 .page .exam-popup-insert-name {
   transition: all 0.4s ease-in-out;
-  height: 21em;
-  width: 15em;
+  height: 22em;
+  width: 16em;
 } 
 .page .input-text {
   width: 11em;
