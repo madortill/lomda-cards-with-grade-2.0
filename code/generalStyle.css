@@ -326,12 +326,13 @@ body {
   width: 15em;
 } 
 .page .input-text {
-  width: 13em;
-  height: 2em;
+  width: 11em;
+  height: 1.8em;
   text-align: center;
   font-family: Rubik;
   border-radius: 8px;
   font-size: inherit;
+  margin-top: -1em;
 }
 .page .instructions.insert-name{
   align-items: center;
