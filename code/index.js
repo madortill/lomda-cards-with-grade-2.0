@@ -1000,35 +1000,60 @@ function beforeExam() {
 }
 
 function insertFullName_popup() {
+    let countValFirstName = 0;
+    let countValLastName = 0;
+
     // מחיקת התוכן מהפופאפ
     document.querySelector(".page.learning.subjects .instructions").innerHTML = "";
     
     // הוספת שינוי צורה לפופאפ
     document.querySelector(".page.learning.subjects .exam-popup").classList.add("exam-popup-insert-name");
 
-    // הוספת כותרת פעולה למשתמש
-    let nameFillText = El("div", {cls: "text-fill-name"},"הכניסו שם מלא");
-    document.querySelector(".page.learning.subjects .instructions").append(nameFillText);
-    
-    // מוסיף עיצוב  להפופאפ הפנימי
-    document.querySelector(".page.learning.subjects .instructions").classList.add("insert-name");
-    
     // הורדת מאזין לחיצה מהכפתור
     document.querySelector(".page.learning.subjects .start-btn").removeEventListener("click", insertFullName_popup); 
     
+    // הוספת כותרת פעולה למשתמש
+    let firstNameFillText = El("div", {cls: "text-fill-name"},"הכניסו שם מלא");
+    document.querySelector(".page.learning.subjects .instructions").append(firstNameFillText);
     
     // הוספת מקום מילוי הטקסט
-    let inputSpace = El("input", {  
+    let inputSpaceFirst = El("input", {  
         attributes: {
-            type: "text", class: "input-text", placeholder: "ישראל ישראלי" 
+            type: "text", class: "input-text", placeholder: "ישראל" 
+        }, listeners : {
+            input: () => {
+                countValFirstName = document.querySelector(".page .instructions :nth-child(2)").value.length;
+                 // רק במידה ומלאו את שדות המילוי יהיה ניתן לעבור למבחן
+                if (countValLastName > 1 && countValFirstName > 1) {
+                    document.querySelector(".page.learning.subjects .start-btn").classList.add("done"); 
+                }
+            }
         }
     });
-    document.querySelector(".page.learning.subjects .instructions").append(inputSpace);
+    document.querySelector(".page.learning.subjects .instructions").append(inputSpaceFirst);
     
-    document.querySelector(".page .input-text").addEventListener("input", () => {
-        document.querySelector(".page.learning.subjects .start-btn").classList.add("done"); 
+    // הוספת כותרת פעולה למשתמש
+    let lastNameFillText = El("div", {cls: "text-fill-name"},"הכניסו שם מלא");
+    document.querySelector(".page.learning.subjects .instructions").append(lastNameFillText);
+    // הוספת מקום מילוי הטקסט
+    let inputSpaceLast = El("input", {  
+        attributes: {
+            type: "text", class: "input-text", placeholder: "ישראלי" 
+        }, listeners : {
+            input: () => {
+                countValLastName = document.querySelector(".page .instructions :nth-child(4)").value.length;
+                 // רק במידה ומלאו את שדות המילוי יהיה ניתן לעבור למבחן
+                if (countValLastName > 1 && countValFirstName > 1) {
+                    document.querySelector(".page.learning.subjects .start-btn").classList.add("done"); 
+                }
+            }
+        }
     });
+    document.querySelector(".page.learning.subjects .instructions").append(inputSpaceLast);
 
+    // מוסיף עיצוב  לפופאפ הפנימי
+    document.querySelector(".page.learning.subjects .instructions").classList.add("insert-name");
+    
     document.querySelector(".page.learning.subjects .start-btn").classList.add("insert-name");
     document.querySelector(".page.learning.subjects .start-btn").src = "../assets/images/general/toTheExam.svg";
     document.querySelector(".page.learning.subjects .start-btn").addEventListener("click", () => {
