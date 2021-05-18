@@ -303,6 +303,42 @@ body {
   margin-top: 0.5em;
 }
 
+.page .start-btn.insert-name {
+  filter: grayscale(100%) brightness(71%);
+  opacity: 0.3;
+  pointer-events: none;
+  transition: filter 0.5s ease-in-out;
+}
+
+.page .start-btn.insert-name.done {
+  filter: grayscale(0%);
+  filter: drop-shadow(0px 4px 7px rgb(87, 171, 197));
+  opacity: 1;
+  pointer-events: all;
+}
+
+.page .text-fill-name {
+  text-align: center;
+
+}
+.page .exam-popup-insert-name {
+  transition: all 0.4s ease-in-out;
+  height: 18em;
+  width: 15em;
+} 
+.page .input-text {
+  width: 13em;
+  height: 2em;
+  text-align: center;
+  font-family: Rubik;
+  border-radius: 8px;
+}
+.page .instructions.insert-name{
+  align-items: center;
+  height: 5em;
+  font-size: 1.2em;
+}
+
 /* יציאה ממבחן או תרגול פופאפ */
 .page .exit-popup {
   color: rgb(27, 62, 84);

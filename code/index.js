@@ -990,24 +990,59 @@ function beforeExam() {
                     attributes: {
                         src: "../assets/images/general/ok_btn.svg", class: "start-btn"
                     }, listeners: {
-                        click: function () {
-                            // כפתור מעבר למבחן מהפופאפ
-                            document.querySelector(".page.learning.subjects .title").style.filter = "unset";
-                            document.querySelector(".page.learning.subjects .sub-title").style.filter = "unset";
-                            document.querySelector(".page.learning.subjects .cards-container").style.filter = "unset";
-                            document.querySelector(".page.learning.subjects .back-btn").style.filter = "unset";
-                            document.querySelector(".page.learning.subjects .buttons").style.filter = "unset";
-                            document.querySelector(".page.learning.subjects .dark").remove();
-                            document.querySelector(".page.learning.subjects").classList.remove("active");
-                            document.querySelector(".page.exam").classList.add("active");
-                            examPage();
-                        }
+                        click: insertFullName_popup
                     }
                 })
             )
         );
 
     document.querySelector(".page.learning.subjects").append(popup);
+}
+
+function insertFullName_popup() {
+    // מחיקת התוכן מהפופאפ
+    document.querySelector(".page.learning.subjects .instructions").innerHTML = "";
+    
+    // הוספת שינוי צורה לפופאפ
+    document.querySelector(".page.learning.subjects .exam-popup").classList.add("exam-popup-insert-name");
+
+    // הוספת כותרת פעולה למשתמש
+    let nameFillText = El("div", {cls: "text-fill-name"},"הכניסו שם מלא");
+    document.querySelector(".page.learning.subjects .instructions").append(nameFillText);
+    
+    // מוסיף עיצוב  להפופאפ הפנימי
+    document.querySelector(".page.learning.subjects .instructions").classList.add("insert-name");
+    
+    // הורדת מאזין לחיצה מהכפתור
+    document.querySelector(".page.learning.subjects .start-btn").removeEventListener("click", insertFullName_popup); 
+    
+    
+    // הוספת מקום מילוי הטקסט
+    let inputSpace = El("input", {  
+        attributes: {
+            type: "text", class: "input-text", placeholder: "ישראל ישראלי" 
+        }
+    });
+    document.querySelector(".page.learning.subjects .instructions").append(inputSpace);
+    
+    document.querySelector(".page .input-text").addEventListener("input", () => {
+        document.querySelector(".page.learning.subjects .start-btn").classList.add("done"); 
+    });
+
+    document.querySelector(".page.learning.subjects .start-btn").classList.add("insert-name");
+    document.querySelector(".page.learning.subjects .start-btn").src = "../assets/images/general/toTheExam.svg";
+    document.querySelector(".page.learning.subjects .start-btn").addEventListener("click", () => {
+         // כפתור מעבר למבחן מהפופאפ
+        document.querySelector(".page.learning.subjects .title").style.filter = "unset";
+        document.querySelector(".page.learning.subjects .sub-title").style.filter = "unset";
+        document.querySelector(".page.learning.subjects .cards-container").style.filter = "unset";
+        document.querySelector(".page.learning.subjects .back-btn").style.filter = "unset";
+        document.querySelector(".page.learning.subjects .buttons").style.filter = "unset";
+        document.querySelector(".page.learning.subjects .dark").remove();
+        document.querySelector(".page.learning.subjects").classList.remove("active");
+        document.querySelector(".page.exam").classList.add("active");
+        examPage();
+    })
 }
 
 // הפונקציה מקבלת את העמוד הנוכחי ויוצאת מ
