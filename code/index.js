@@ -1015,7 +1015,7 @@ function insertFullName_popup() {
     document.querySelector(".page.learning.subjects .start-btn").removeEventListener("click", insertFullName_popup); 
     
     // הוספת כותרת פעולה למשתמש
-    let firstNameFillText = El("div", {cls: "text-fill-name"},"הכניסו שם מלא");
+    let firstNameFillText = El("div", {cls: "text-fill-name"},"הכניסו שם פרטי");
     document.querySelector(".page.learning.subjects .instructions").append(firstNameFillText);
     
     // הוספת מקום מילוי הטקסט
@@ -1038,7 +1038,7 @@ function insertFullName_popup() {
     document.querySelector(".page.learning.subjects .instructions").append(inputSpaceFirst);
     
     // הוספת כותרת פעולה למשתמש
-    let lastNameFillText = El("div", {cls: "text-fill-name"},"הכניסו שם מלא");
+    let lastNameFillText = El("div", {cls: "text-fill-name"},"הכניסו שם משפחה");
     document.querySelector(".page.learning.subjects .instructions").append(lastNameFillText);
     // הוספת מקום מילוי הטקסט
     let inputSpaceLast = El("input", {  
