@@ -357,11 +357,11 @@ function questionsToPractice() {
     for (let subject of subjects) {
         let subjectData = DATA[subject];
         // מספר השאלות לנושא
-        let subjectQuestions = subjectData.questions.length;
+        let subjectQuestions = subjectData.questionsPractice.length;
         // בוחר את מספר השאלות
         let questionCount = Math.min(subjectQuestions, Math.max(Math.floor(maxQuestionAmountForTopic), 1));
         // מסדר באופן רנדומלי את השאלות ממערך הנתונים
-        let shuffledQuestions = shuffle(subjectData.questions.slice());
+        let shuffledQuestions = shuffle(subjectData.questionsPractice.slice());
         // בוחר את האיקס שאלות הראשונות
         selectedQuestions.push(...shuffledQuestions.slice(0, questionCount));
         if (selectedQuestions.length === AMOUNT_OF_TOTAL_QUESTIONS) break;
@@ -1159,11 +1159,11 @@ function questionsToExam() {
     for (let subject of SUBJECTS_TITLES) {
         let subjectData = DATA[subject];
         // מספר השאלות לנושא
-        let subjectQuestions = subjectData.questions.length;
+        let subjectQuestions = subjectData.questionsExam.length;
         // בוחר את מספר השאלות
         let questionCount = Math.min(subjectQuestions, subjectData.amountOfQuestions);
         // מסדר באופן רנדומלי את השאלות ממערך הנתונים
-        let shuffledQuestions = shuffle(subjectData.questions.slice());
+        let shuffledQuestions = shuffle(subjectData.questionsExam.slice());
         // בוחר את האיקס שאלות הראשונות
         selectedQuestions.push(...shuffledQuestions.slice(0, questionCount));
         if (selectedQuestions.length === AMOUNT_OF_TOTAL_QUESTIONS) break;
