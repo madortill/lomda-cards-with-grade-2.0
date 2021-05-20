@@ -25,6 +25,7 @@
 .page.opening .sub-title {
   height: 4vmax;
   margin-top: auto;
+  text-align: center;
 }
 
 .page.opening .title {

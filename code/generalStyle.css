@@ -126,7 +126,6 @@ body {
    padding-top: 0.2em;
 }
 
-
 .page .popup-sub-titles {
   display: flex;
   align-items: center;
@@ -220,7 +219,7 @@ body {
 .page.practice .question-text {
   position: absolute;
   height: 37vmax;
-  width: 37vmax;
+  width: 34vmax;
   right: 4vmax;
   top: 12vmax;
   color: rgb(28, 63, 85);
