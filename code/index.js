@@ -1088,8 +1088,8 @@ function exit(page) {
     let popup =
         El("div", { cls: "dark" },
             El("div", { cls: "exit-popup", },
-                El("div", { cls: "title-popup" }, "רוצה לוותר?"),
-                El("div", { cls: "sub-title-popup" }, "לא תרצה להמשיך לנסות?"),
+                El("div", { cls: "title-popup" }, "רוצים לוותר?"),
+                El("div", { cls: "sub-title-popup" }, "לא תרצו להמשיך לנסות?"),
                 El("img", {
                     attributes: {
                         src: "../assets/images/general/close_btn.svg", class: "close-btn"
@@ -1147,6 +1147,67 @@ function exit(page) {
 
         )
     document.querySelector(`.page.${page}`).append(popup);
+}
+
+function donePopup() {
+    let popup =
+        El("div", { cls: "dark" },
+            El("div", { cls: "done-exam-popup", },
+                El("div", { cls: "title-popup" }, "בטוח שתרצו להגיש?"),
+                El("div", { cls: "sub-title-popup" }, "לא ניתן לחזור אחורה"),
+                El("img", {
+                    attributes: {
+                        src: "../assets/images/general/close_btn.svg", class: "close-btn"
+                    }, listeners: {
+                        // // כפתור סגירה של הפופאפ
+                        click: function () {
+                            // חזרה למבחן או לתרגול
+                            document.querySelector(`.page.exam .title`).style.filter = "unset";
+                            document.querySelector(`.page.exam .sub-titles`).style.filter = "unset";
+                            document.querySelector(`.page.exam .questions-container`).style.filter = "unset";
+                            document.querySelector(`.page.exam .back-btn`).style.filter = "unset";
+                            document.querySelector(`.page.exam .questions-number`).style.filter = "unset";
+                            document.querySelector(".page.exam .dark").remove();
+                        }
+                    }
+                }),
+                El("div", { cls: "buttons-exit-popup" },
+                    El("img", {
+                        attributes: {
+                            src: "../assets/images/exam/toHand_btn.svg", class: "button-popup",
+                        }, listeners: {
+                            click: function () {
+                                // כפתור הגשה
+                                document.querySelector(`.page.exam .title`).style.filter = "unset";
+                                document.querySelector(`.page.exam .sub-titles`).style.filter = "unset";
+                                document.querySelector(`.page.exam .questions-container`).style.filter = "unset";
+                                document.querySelector(`.page.exam .back-btn`).style.filter = "unset";
+                                document.querySelector(`.page.exam .questions-number`).style.filter = "unset";
+                                document.querySelector(".page.exam .dark").remove();
+                                checkAnswer();
+                            }
+                        }
+                    }),
+                    El("img", {
+                        attributes: {
+                            src: "../assets/images/exam/backToExam_btn.svg", class: "button-popup"
+                        }, listeners: {
+                            click: function () {
+                                // חזרה למבחן
+                                document.querySelector(`.page.exam .title`).style.filter = "unset";
+                                document.querySelector(`.page.exam .sub-titles`).style.filter = "unset";
+                                document.querySelector(`.page.exam .questions-container`).style.filter = "unset";
+                                document.querySelector(`.page.exam .back-btn`).style.filter = "unset";
+                                document.querySelector(`.page.exam .questions-number`).style.filter = "unset";
+                                document.querySelector(".page.exam .dark").remove();
+                            }
+                        }
+                    })
+                )
+            )
+
+        )
+    document.querySelector(`.page.exam`).append(popup);
 }
 
 
@@ -1462,7 +1523,7 @@ function ifComplete() {
             },
             listeners: {
                 click: () => {
-                    checkAnswer();
+                    donePopup();
                 }
             }
         })

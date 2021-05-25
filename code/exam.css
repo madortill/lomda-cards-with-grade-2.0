@@ -258,3 +258,38 @@
   -webkit-animation: focus 1.2s ease;
 }
 
+.page.exam .done-exam-popup {
+  color: rgb(27, 62, 84);
+  width: 78vw;
+  height: 65vw;
+  border-radius: 14px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+  background-image: url(../assets/images/general/leavePracticeOrExam_popup/leavePracticeOrExam_popup.svg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center
+}
+
+.page.exam .done-exam-popup .buttons-exit-popup {
+  width: 78%;
+  margin-bottom: 11%;
+}
+
+
+.page.exam .done-exam-popup .title-popup{
+  margin-top: 2.6em;
+  margin-bottom: 0.3em;
+}
+
+.page.exam .done-exam-popup .sub-title-popup {
+  width: 70%;
+  text-align: center;
+}
+
+.page.exam .done-exam-popup .buttons-exit-popup > img{
+  width: 6.2em;
+}
