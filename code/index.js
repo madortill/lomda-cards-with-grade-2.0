@@ -1584,8 +1584,8 @@ function endExam(amountOfCorrectAnswers) {
 
     name = `${firstName} ${lastName}`;
     date = new Date();
-    let today = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-
+    let todayDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+    let currTime = date.getHours() + ":" + date.getMinutes();
     grade = amountOfCorrectAnswers / QUESTIONS.length * 100; 
 
     // האם כמות התשובות הנכונות גדולה מחצי מהשאלות
@@ -1603,7 +1603,7 @@ function endExam(amountOfCorrectAnswers) {
                 El("div", { cls: "title-popup" }, name),
                 El("div", { cls: "popup-sub-titles" },
                     El("div", { cls: "text1-popup" }, "ציון: " + grade),
-                    El("div", { cls: "text2-popup" }, today),
+                    El("div", { cls: "text2-popup" }, `${currTime} | ${todayDate}`),
                 ),
                 El("div", { cls: "instructions-practice" },
                     // בלוק 1

@@ -112,8 +112,13 @@ body {
   width: 8em;
   text-align: center;
 }
+
 .page.exam .exit-popup .title-popup {
-   margin-top: 3em;
+  margin-top: 3em;
+}
+
+.page.exam .end-exam .title-popup {
+  font-size: 6vmin;
 }
 
 .page.exam .title-popup {
@@ -122,8 +127,8 @@ body {
    background-repeat: no-repeat;
    background-size: 100% 100%;
    border-radius: 1em;
-   width: 7.5em;
-   padding-top: 0.2em;
+   width: 8.5em;
+   padding-top: 0.3em;
 }
 
 .page .popup-sub-titles {
