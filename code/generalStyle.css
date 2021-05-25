@@ -383,7 +383,7 @@ body {
 
 .page .buttons-exit-popup {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 15%;
   width: 65%;
 }
