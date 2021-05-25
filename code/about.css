@@ -39,6 +39,7 @@
   height: 106vmin;
   justify-content: space-around;
   width: 84%;
+  text-align: right;
 }
 
 .page.about .container-titles :first-child {
