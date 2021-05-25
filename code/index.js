@@ -210,7 +210,7 @@ function beforePractice() {
                     El("div", {},
                         El("img", { attributes: { class: "icon2", src: "../assets/images/practice/beforePractice_popup/timer_icon.svg" } }),
                         El("div", { cls: "text" },
-                            El("b", {}, " 2 דקות"),
+                            El("b", {}, "דקה"),
                             El("br", {}),
                             "לשאלה"
                         ),
