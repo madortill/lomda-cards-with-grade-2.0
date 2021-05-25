@@ -114,7 +114,7 @@ body {
 }
 
 .page.exam .exit-popup .title-popup {
-  margin-top: 3em;
+  margin-top: 2.5em;
 }
 
 .page.exam .end-exam .title-popup {
@@ -123,12 +123,15 @@ body {
 
 .page.exam .title-popup {
    height: 1.6em;
-   background-image: url("../assets/images/exam/name_bg.svg");
    background-repeat: no-repeat;
    background-size: 100% 100%;
    border-radius: 1em;
    width: 8.5em;
    padding-top: 0.3em;
+}
+
+.page.exam .end-exam .title-popup {
+   background-image: url("../assets/images/exam/name_bg.svg");
 }
 
 .page .popup-sub-titles {

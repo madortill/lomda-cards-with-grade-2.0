@@ -23,7 +23,7 @@ var QUESTIONS = [];
 var currCardCount;
 
 // עמוד מבחן
-const SECONDS_59 = 59;
+var EXAM_SECONDS;
 var EXAM_MINUTS;
 var currentQuestionExam = 0;
 var timerExam;
@@ -1199,9 +1199,21 @@ function examPage() {
     document.querySelector(".page.exam").append(backBtn);
 
     // איפוס זמן המבחן לפי בחירת מומחה התוכן
-    EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0) - 1);
+    examSeconds = TIME_FOR_EXAM.slice(-2);
+    if (examSeconds ===  "00")  {
+        examSeconds = 0;
+        EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0) - 1);
+    }
+    else if (examSeconds.charAt(0) === "0") {
+        examSeconds = Number(TIME_FOR_EXAM.slice(-1));
+        EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
+    }
+    else {
+        examSeconds = Number(TIME_FOR_EXAM.slice(-2));
+        EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
+    }
     examMinutes = EXAM_MINUTS;
-    examSeconds = SECONDS_59;
+    
     document.querySelector(".page.exam .timer-text").innerHTML = TIME_FOR_EXAM;
     document.querySelector(".page.exam .questionNumber-text").innerHTML = "0" + "/" + QUESTIONS.length;
     timerExam = setInterval(startTimerExam, 1000);
@@ -1509,9 +1521,15 @@ function startTimerExam() {
         }
         // עברה דקה
         else {
-            examSeconds = SECONDS_59;
+            examSeconds = 59;
             examMinutes--;
         }
+    }
+    if (examMinutes === 1 && examSeconds === 0) {
+        document.querySelector(".page.exam .timer-text").classList.add("timeFocus");
+        setTimeout(function () {
+            document.querySelector(".page.exam .timer-text").classList.remove("timeFocus");
+        }, 1000);
     }
     // מדפיס את הספרה 0 לפני חד ספרות 
     if (examSeconds < 10) {
@@ -1560,7 +1578,7 @@ function endExam(amountOfCorrectAnswers) {
 
     // חישוב כמה דקות היה המבחן
     let minutes = EXAM_MINUTS - examMinutes;
-    let seconds = Number(SECONDS_59 - examSeconds);
+    let seconds = Number(59 - examSeconds);
     // בודק האם השניות הגיעו לדקה
     if (seconds === "60") {
         seconds = 0;

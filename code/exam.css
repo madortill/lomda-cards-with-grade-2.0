@@ -1,3 +1,12 @@
+@keyframes focus {
+  0%   {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .exam {
   display: flex;
   justify-content: space-between;
@@ -212,7 +221,8 @@
   background-color: var(--color);
 }
 
-.page.exam .wrong {
+.page.exam .wrong, 
+.page.exam .timeFocus {
   --color: rgb(227, 59, 78);
 }
 
@@ -227,3 +237,11 @@
   background-repeat: no-repeat;
   box-sizing: 100% 100%;
 }
+
+.timeFocus {
+  transition: all 1s ease-in-out;
+  color: var(--color);
+  animation: focus 1.2s ease;
+  -webkit-animation: focus 1.2s ease;
+}
+
