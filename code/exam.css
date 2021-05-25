@@ -279,10 +279,10 @@
   margin-bottom: 11%;
 }
 
-
 .page.exam .done-exam-popup .title-popup{
   margin-top: 2.6em;
   margin-bottom: 0.3em;
+  width: 86%;
 }
 
 .page.exam .done-exam-popup .sub-title-popup {
@@ -291,5 +291,5 @@
 }
 
 .page.exam .done-exam-popup .buttons-exit-popup > img{
-  width: 6.2em;
+  width: 7.2em;
 }
