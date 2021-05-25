@@ -1516,7 +1516,7 @@ function ifComplete() {
     }
 
     // האם כל השאלות נענו וגם העמוד 
-    if (isCompleteAnswers && !document.querySelector(".page.exam.done")) {
+    if (isCompleteAnswers && !document.querySelector(".page.exam.done") && document.querySelector('.page .next-back-btn > img') === null) {
         let finishBtn = El("img", {
             attributes: {
                 class: "done-btn", src: "../assets/images/exam/Done_btn.svg",
