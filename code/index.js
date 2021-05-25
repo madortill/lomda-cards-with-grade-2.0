@@ -911,6 +911,7 @@ function beforeExam() {
     document.querySelector(".page.learning.subjects .back-btn").style.filter = `blur(${blurAmount})`;
     document.querySelector(".page.learning.subjects .buttons").style.filter = `blur(${blurAmount})`;
 
+    examTime();
 
     let popup =
         El("div", { cls: "dark" },
@@ -951,7 +952,7 @@ function beforeExam() {
                             "שימו לב שזמן המבחן",
                             El("br", {}),
                             "מוגבל לכ-",
-                            El("b", {}, "10 דקות")
+                            El("b", {}, `${EXAM_MINUTS} דקות`)
                         ),
                         El("img", { attributes: { src: "../assets/images/exam/beforeExam_popup/timer_icon.svg", class: "icon2" } }),
                     ),
@@ -999,6 +1000,38 @@ function beforeExam() {
         );
 
     document.querySelector(".page.learning.subjects").append(popup);
+}
+
+function examTime(){
+    // איפוס זמן המבחן לפי בחירת מומחה התוכן
+    EXAM_SECONDS = TIME_FOR_EXAM.slice(-2);
+    if (EXAM_SECONDS ===  "00")  {
+        EXAM_SECONDS = 0;
+        if (TIME_FOR_EXAM.length > 4) 
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.slice(0,2));
+        else
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
+        examMinutes = EXAM_MINUTS - 1;
+        examSeconds = 59;
+    }
+    else if (EXAM_SECONDS.charAt(0) === "0") {
+        EXAM_SECONDS = Number(TIME_FOR_EXAM.slice(-1));
+        if (TIME_FOR_EXAM.length > 4) 
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.slice(0,2));
+        else
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
+        examMinutes = EXAM_MINUTS;
+        examSeconds = EXAM_SECONDS;
+    }
+    else {
+        EXAM_SECONDS = Number(TIME_FOR_EXAM.slice(-2));
+        if (TIME_FOR_EXAM.length > 4) 
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.slice(0,2));
+        else
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
+        examMinutes = EXAM_MINUTS;
+        examSeconds = EXAM_SECONDS;
+    }
 }
 
 function insertFullName_popup() {
@@ -1258,36 +1291,6 @@ function examPage() {
             }
         });
     document.querySelector(".page.exam").append(backBtn);
-
-    // איפוס זמן המבחן לפי בחירת מומחה התוכן
-    EXAM_SECONDS = TIME_FOR_EXAM.slice(-2);
-    if (EXAM_SECONDS ===  "00")  {
-        EXAM_SECONDS = 0;
-        if (TIME_FOR_EXAM.length > 4) 
-            EXAM_MINUTS = Number(TIME_FOR_EXAM.slice(0,2));
-        else
-            EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
-        examMinutes = EXAM_MINUTS - 1;
-        examSeconds = 59;
-    }
-    else if (EXAM_SECONDS.charAt(0) === "0") {
-        EXAM_SECONDS = Number(TIME_FOR_EXAM.slice(-1));
-        if (TIME_FOR_EXAM.length > 4) 
-            EXAM_MINUTS = Number(TIME_FOR_EXAM.slice(0,2));
-        else
-            EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
-        examMinutes = EXAM_MINUTS;
-        examSeconds = EXAM_SECONDS;
-    }
-    else {
-        EXAM_SECONDS = Number(TIME_FOR_EXAM.slice(-2));
-        if (TIME_FOR_EXAM.length > 4) 
-            EXAM_MINUTS = Number(TIME_FOR_EXAM.slice(0,2));
-        else
-            EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
-        examMinutes = EXAM_MINUTS;
-        examSeconds = EXAM_SECONDS;
-    }
 
     document.querySelector(".page.exam .timer-text").innerHTML = TIME_FOR_EXAM;
     document.querySelector(".page.exam .questionNumber-text").innerHTML = "0" + "/" + QUESTIONS.length;
