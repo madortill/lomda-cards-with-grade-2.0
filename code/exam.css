@@ -135,28 +135,40 @@
 
 .page.exam .next-back-btn {
   display: flex;
-  justify-self: flex-end;
-  height: 11vw;
+  align-items: center;
+  height: 2em;
   direction: ltr;
   position: relative;
   bottom: 9vh;
-  width: 91%;
+  width: 16em;
+  right: 1.5em;
 }
 
-.page.exam .next-back-btn.num1 .back {
+.page.exam .next-back-btn > img {
+  height: 9vw;
+  margin: 0 2vw;
+}
+
+.page.exam .next-back-btn .arrows {
+  display: flex;
+  align-items: center;
+}
+
+.page.exam .next-back-btn.num1 .arrows .back {
   visibility: hidden;
   pointer-events: none;
 }
-.page.exam .next-back-btn.last>img.back {
+
+.page.exam .next-back-btn .arrows .last>img.back {
   transform: translateX(-140%);
 }
 
-.page.exam .next-back-btn.last .next {
+.page.exam .next-back-btn .arrows .last .next {
   visibility: hidden;
   pointer-events: none;
 }
 
-.page.exam .next-back-btn>img {
+.page.exam .next-back-btn .arrows>img {
   height: 9vw;
   margin: 0 2vw;
 }

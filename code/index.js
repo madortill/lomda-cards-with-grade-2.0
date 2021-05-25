@@ -1202,19 +1202,28 @@ function examPage() {
     EXAM_SECONDS = TIME_FOR_EXAM.slice(-2);
     if (EXAM_SECONDS ===  "00")  {
         EXAM_SECONDS = 0;
-        EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
+        if (TIME_FOR_EXAM.length > 4) 
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.slice(0,2));
+        else
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
         examMinutes = EXAM_MINUTS - 1;
         examSeconds = 59;
     }
     else if (EXAM_SECONDS.charAt(0) === "0") {
         EXAM_SECONDS = Number(TIME_FOR_EXAM.slice(-1));
-        EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
+        if (TIME_FOR_EXAM.length > 4) 
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.slice(0,2));
+        else
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
         examMinutes = EXAM_MINUTS;
         examSeconds = EXAM_SECONDS;
     }
     else {
         EXAM_SECONDS = Number(TIME_FOR_EXAM.slice(-2));
-        EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
+        if (TIME_FOR_EXAM.length > 4) 
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.slice(0,2));
+        else
+            EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
         examMinutes = EXAM_MINUTS;
         examSeconds = EXAM_SECONDS;
     }
@@ -1311,8 +1320,10 @@ function createQuestionExam() {
     // הוספת כפתורי קדימה אחורה
     let buttons =
         El("div", { cls: "next-back-btn" },
-            El("img", { attributes: { src: "../assets/images/exam/next_btn.svg" }, cls: "next" }),
-            El("img", { attributes: { src: "../assets/images/exam/back_btn.svg" }, cls: "back" })
+            El("div", {cls:"arrows"},
+                El("img", { attributes: { src: "../assets/images/exam/next_btn.svg" }, cls: "next" }),
+                El("img", { attributes: { src: "../assets/images/exam/back_btn.svg" }, cls: "back" })
+            )
         );
     if (currentQuestionExam === QUESTIONS.length - 1)
         buttons.classList.add("last");
@@ -1445,7 +1456,6 @@ function ifComplete() {
 
     // האם כל השאלות נענו וגם העמוד 
     if (isCompleteAnswers && !document.querySelector(".page.exam.done")) {
-        document.querySelector(".page.exam .next-back-btn").innerHTML = "";
         let finishBtn = El("img", {
             attributes: {
                 class: "done-btn", src: "../assets/images/exam/Done_btn.svg",
@@ -1457,6 +1467,7 @@ function ifComplete() {
             }
         })
         document.querySelector(".page.exam .next-back-btn").append(finishBtn);
+        document.querySelector(".page.exam .next-back-btn").style.justifyContent = "space-between";
     }
 }
 
