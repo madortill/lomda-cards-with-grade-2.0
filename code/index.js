@@ -1199,21 +1199,26 @@ function examPage() {
     document.querySelector(".page.exam").append(backBtn);
 
     // איפוס זמן המבחן לפי בחירת מומחה התוכן
-    examSeconds = TIME_FOR_EXAM.slice(-2);
-    if (examSeconds ===  "00")  {
-        examSeconds = 0;
-        EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0) - 1);
-    }
-    else if (examSeconds.charAt(0) === "0") {
-        examSeconds = Number(TIME_FOR_EXAM.slice(-1));
+    EXAM_SECONDS = TIME_FOR_EXAM.slice(-2);
+    if (EXAM_SECONDS ===  "00")  {
+        EXAM_SECONDS = 0;
         EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
+        examMinutes = EXAM_MINUTS - 1;
+        examSeconds = 59;
+    }
+    else if (EXAM_SECONDS.charAt(0) === "0") {
+        EXAM_SECONDS = Number(TIME_FOR_EXAM.slice(-1));
+        EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
+        examMinutes = EXAM_MINUTS;
+        examSeconds = EXAM_SECONDS;
     }
     else {
-        examSeconds = Number(TIME_FOR_EXAM.slice(-2));
+        EXAM_SECONDS = Number(TIME_FOR_EXAM.slice(-2));
         EXAM_MINUTS = Number(TIME_FOR_EXAM.charAt(0));
+        examMinutes = EXAM_MINUTS;
+        examSeconds = EXAM_SECONDS;
     }
-    examMinutes = EXAM_MINUTS;
-    
+
     document.querySelector(".page.exam .timer-text").innerHTML = TIME_FOR_EXAM;
     document.querySelector(".page.exam .questionNumber-text").innerHTML = "0" + "/" + QUESTIONS.length;
     timerExam = setInterval(startTimerExam, 1000);
