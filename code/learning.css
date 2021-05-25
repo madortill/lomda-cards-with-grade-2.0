@@ -139,6 +139,7 @@
 .page.learning.subjects .subjects {
   overflow: auto;
   width: 100%;
+  padding-right: 0.1em;
 }
 
 .page.learning.subjects .subject-popup {

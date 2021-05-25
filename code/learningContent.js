@@ -139,17 +139,15 @@ const DATA = {
                         content: "סרטון מוסר שלא הבנתי למה הוא היה על המחשב של פלג... פטל.. שלג?"
                     }
                 ],
-                // "תת תת נושא 23": [
-                //     {
-                //         cardType: "twoPics",
-                //         pic1: "../assets/images/Artboard 1 copy 2@2x.png",
-                //         content1: "זה דוגמה לתמונה מוצלחת ראשונה",
-                //         // subTitle1: "זה דוגמה לתמונה מוצלחת ראשונה",
-                //         pic2: "../assets/images/Artboard 1 copy 2@2x.png",
-                //         content2: "זה דוגמה לתמונה מוצלחת שנייה"
-                //         // subTitle2: "זה דוגמה לתמונה מוצלחת שנייה"
-                //     }
-                // ]
+                "תת תת נושא 23": [
+                    {
+                        cardType: "list3",
+                        subTitle: "כותרת לרשימה:",
+                        li1:"משפט ראשון ברשימה, זה לדוגמה משט יחסית ארוך משאר המשפטים ויש נקודה בסוף המשפט.",
+                        li2:"משפט שני ברשימה",
+                        li3:"משפט שלישי ברשימה",
+                    }
+                ]
             },
             "תת נושא 4": {
                 "תת תת נושא 12": [
@@ -757,5 +755,14 @@ CARD_TYPES._3titles_3text = {
         card.querySelector(".content2").innerHTML = json.content2;
         card.querySelector(".sub-title3").innerHTML = json.subTitle3;
         card.querySelector(".content3").innerHTML = json.content3;
+    }
+}
+
+CARD_TYPES.list3 = {
+    init(card, json) {
+        card.querySelector(".sub-title").innerHTML = json.subTitle;
+        card.querySelector(".li1").innerHTML = json.li1;
+        card.querySelector(".li2").innerHTML = json.li2;
+        card.querySelector(".li3").innerHTML = json.li3;
     }
 }
