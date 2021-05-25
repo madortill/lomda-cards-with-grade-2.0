@@ -140,8 +140,9 @@
   direction: ltr;
   position: relative;
   bottom: 9vh;
-  width: 16em;
+  width: 85%;
   right: 1.5em;
+  justify-content: flex-start;
 }
 
 .page.exam .next-back-btn > img {
@@ -159,11 +160,11 @@
   pointer-events: none;
 }
 
-.page.exam .next-back-btn .arrows .last>img.back {
+.page.exam .next-back-btn.last .arrows>img.back {
   transform: translateX(-140%);
 }
 
-.page.exam .next-back-btn .arrows .last .next {
+.page.exam .next-back-btn.last .arrows .next {
   visibility: hidden;
   pointer-events: none;
 }
