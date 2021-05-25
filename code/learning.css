@@ -378,15 +378,13 @@
 }
 
 .page.learning.content .cards-container {
-  padding-bottom: 15vh;
+  padding-bottom: 20vh;
   overflow: auto;
   width: 100%;
   scroll-snap-type: y mandatory;
-  scroll-snap-align: center;
-  /* scroll-padding-bottom: 0; */
+  scroll-snap-align: start;
   flex: 1;
 }
-
 .page.learning.content .content {
   margin-bottom: 1em;
 }
