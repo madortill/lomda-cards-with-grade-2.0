@@ -242,6 +242,7 @@
   display: flex;
   margin-bottom: 1em;
   align-items: center;
+  justify-content: center;
 }
 
 .page.learning.content .container-subjects .arrow {

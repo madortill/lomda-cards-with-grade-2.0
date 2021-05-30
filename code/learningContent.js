@@ -105,7 +105,7 @@ const DATA = {
                     },
                     {
                         cardType: "_3titles_3text",
-                        subTitle1: "אפשרות לכותרות בלבד",
+                        subTitle1: "אפשרות לכותרות ותוכן בלי תמונות",
                         content1: "ולכל כותרת יש תוכן כמובן",
                         subTitle2: "כותרת שנייה",
                         content2: "תשובה לכותרת השנייה",
