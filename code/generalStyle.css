@@ -290,7 +290,6 @@ body {
 
 .page .text {
   font-size: 4vmin;
-  text-align: center;
 }
 
 .page .exam-popup .text {
@@ -431,6 +430,7 @@ body {
   margin: 6vw 0;
   box-sizing: border-box;
   align-items: flex-end;
+  text-align: center;
 }
 
 .page .beforePractice-instruction-container>div {
