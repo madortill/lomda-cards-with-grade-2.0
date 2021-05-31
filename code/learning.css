@@ -257,7 +257,7 @@
 }
 
 .page.learning.content .sub-topics-container {
-  padding: 1em;
+  padding: 1em 0.2em;
   white-space: nowrap;
   scroll-snap-align: center;
   max-height: 1em;
@@ -446,4 +446,13 @@
 
 .page.learning.content .block {
   display: block;
+}
+
+.page.learning.content .sub-sub-topic{
+  min-width: 10em;
+  margin-bottom: 0.4em;
+  overflow: initial;
+  display: flex;
+  justify-content: center;
+  white-space: normal;
 }
