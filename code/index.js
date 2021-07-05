@@ -1063,7 +1063,7 @@ function insertFullName_popup() {
                     firstName = document.querySelector(".page .instructions :nth-child(2)").value;
                     lastName = document.querySelector(".page .instructions :nth-child(4)").value;
                     document.querySelector(".page.learning.subjects .start-btn").classList.add("done"); 
-                    console.log( `${firstName} ${lastName}`);
+                    // console.log( `${firstName} ${lastName}`);
                 }
             }
         }
@@ -1783,7 +1783,7 @@ function endExam(amountOfCorrectAnswers) {
         showAnswersExam();
         //גילוי עיגול אדום או ירוק לפי התשובה על הניווט התחתון עם המספרים
         document.querySelector(".page.exam .questions-number").scrollLeft = document.querySelector(".page.exam .questions-number").offsetWidth;
-        console.log(document.querySelector(".page.exam .questions-number").offsetWidth);
+        // console.log(document.querySelector(".page.exam .questions-number").offsetWidth);
         showQuestionsValidity();
         //
         ifAnswer();
@@ -1972,9 +1972,7 @@ function subjectLearningPage(subject) {
         // מוסיפים את התת נושא לתפריט ניווט
         let menu = document.querySelector(".page.learning.content .container-subjects");
         menu.append(subTopic);
-        // document.querySelector(".page.learning.content .container-subjects").scrollLeft = 0;
-        document.querySelector(".page.learning.content .container-subjects").scrollLeft = document.querySelector(".page.learning.content .container-subjects").scrollWidth;
-
+        
         // מוסיף את כל הכרטיסיות של התת נושא
         let arrCards = subSubTopics.map(subSubTopic => {
             // גייסון של כל תתי תתי הנושא
@@ -1993,7 +1991,7 @@ function subjectLearningPage(subject) {
         document.querySelector(".page.learning.content .cards-container").append(...arrCards);
         id++;
     }
-
+    document.querySelector(".page.learning.content .container-subjects").scrollLeft = document.querySelector(".page.learning.content .container-subjects").scrollWidth;
     // הפונקציה גוללת אל הכרטיסייה הנלחצת על ידי החניך 
     function relevantCard(cardTitle) {
         document.querySelectorAll(".page.learning.content .card-group.block").forEach(function (card) {
