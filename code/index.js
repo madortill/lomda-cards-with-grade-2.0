@@ -1972,6 +1972,8 @@ function subjectLearningPage(subject) {
         // מוסיפים את התת נושא לתפריט ניווט
         let menu = document.querySelector(".page.learning.content .container-subjects");
         menu.append(subTopic);
+        // document.querySelector(".page.learning.content .container-subjects").scrollLeft = 0;
+        document.querySelector(".page.learning.content .container-subjects").scrollLeft = document.querySelector(".page.learning.content .container-subjects").scrollWidth;
 
         // מוסיף את כל הכרטיסיות של התת נושא
         let arrCards = subSubTopics.map(subSubTopic => {
