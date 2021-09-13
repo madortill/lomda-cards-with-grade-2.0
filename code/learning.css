@@ -405,6 +405,7 @@
   max-width: 83vw;
   margin-right: 50%;
   transform: translate(50%);
+  margin-bottom: 1rem;
 }
 
 .page.learning.content .card.next {
