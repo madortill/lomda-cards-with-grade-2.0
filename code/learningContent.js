@@ -770,10 +770,9 @@ CARD_TYPES.list3 = {
         card.querySelector(".li3").innerHTML = json.li3;
     }
 }
-
-// CARD_TYPES.youtubeVideo = {
-//     init(card, json) {
-//         card.querySelector(".video").innerHTML = json.video;
-//     }
-// }
-
+CARD_TYPES.youtube = {
+    init(card, json) {
+        card.querySelector(".youtube").src = json.youtube;
+  
+    }
+}
